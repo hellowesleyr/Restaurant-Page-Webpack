@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&family=Nunito:ital,wght@1,300&display=swap');
-
+body {
+  margin: 0; 
+  padding: 0;
+}
 :root {
   --primaryColor: #0F053F;
 
@@ -10,16 +13,30 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  position: sticky;
+  position: -webkit-sticky;
 }
 .navBar{
+  padding: 20px;
   background-color: var(--primaryColor);
+  justify-content: center;
   display: flex;
   flex-direction: row;
   align-items: center;
   color:white;
-  
   font-size: 32px;
   background-color: var(--primaryColor);
+  justify-content: space-around;
+}
+.navBar>:first-child{
+  margin-left: 50vh;
+}
+.navBar>:last-child{
+  margin-right: 50vh;
+}
+.navitem:hover{
+  color: #CFFAFE;
 }
 
 .hello {
