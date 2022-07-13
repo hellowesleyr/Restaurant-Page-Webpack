@@ -1,0 +1,151 @@
+body {
+    margin: 0; 
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    background-color: var(--primaryColor);
+    
+  }
+:root {
+    --primaryColor: #0F053F;
+    --secondaryColor: #F6F7FF;
+  }
+
+
+.infoPanel {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    color: var(--primaryColor);
+    font-size: 18px;
+    padding: 2rem 16.5%;
+  }
+
+  .infoColumn {
+    margin-right: 10vw;;
+  }
+
+  .infoHeader {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .facilities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+  }
+  .facilities>img{
+    width: 80%;
+  }
+
+  .aboutContainer {
+    color: var(--primaryColor);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+.aboutContainer{
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+.aboutRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 0 10vw;
+}
+.formColumn{
+
+}
+
+#contactForm{
+    display: flex;
+    flex-direction: column ;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.infoHeader{
+    
+}
+.infoBox {
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    color: var(--primaryColor);
+    font-size: 18px;
+}
+
+.locationInfoRow{
+    color: var(--primaryColor);
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2rem 5vw;
+}
+.locationInfoRow>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+.parkingImgContainer{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    background-color: white;
+    padding: 0 10vw;
+}
+
+.mapouter {
+    overflow:scroll;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#contactForm>input {
+    border: solid 1px #CECECE;
+    height: 3rem;
+    font-size: 18px;
+    width: clamp(10rem,40rem,40vw);
+    margin-bottom: 2rem;
+    color: black
+}
+#contactForm>textarea {
+    width: clamp(10rem,40rem,40vw);
+    resize: none;
+    font-size: 18px;
+}
+#contactForm>label{
+    font-size: 18px;
+}
+#contactForm>#submit {
+    background-color: var(--primaryColor);
+    color: white;
+    padding: 0.5rem 1rem;
+    width: auto;
+    margin: 1rem;
+    font-size: 16px;
+
+}
+#contactForm>#submit:hover {
+    background-color: white;
+    color: var(--primaryColor);
+    border: 1px var(--primaryColor) solid;
+}
+
