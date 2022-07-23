@@ -102,6 +102,8 @@ h3,h4,h2 {
   padding: 1rem;
   flex-direction: row;
   width: 90vw;
+  justify-content: center;
+  align-items: center;
   overflow:hidden;
 }
 
@@ -116,6 +118,15 @@ h3,h4,h2 {
 
 .gallery>.active{
   width: 23vw;
+}
+
+.gallery>.activeRight{
+  transform: translateX(23vw);
+}
+
+.gallery>.activeLeft{
+  transform: translateX(-23vw);
+
 }
 
 .gallery>.inactive{

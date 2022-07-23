@@ -2,11 +2,12 @@
 
 }
 
-
 :root {
     --primaryColor: #0F053F;
     --secondaryColor: #F6F7FF;
   }
+
+  
 
 .imgWrapper {
     display:block

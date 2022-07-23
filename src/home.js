@@ -3,7 +3,8 @@ import greenhall from './assets/greenhall.jpg'
 
 export default function  home(brownie,hall,martini,pizza,salad,green,awardBronze,awardStar,awardLiving,tapasShowCaseImg,cocktailShowcaseImg,pizzaShowcaseImg,bar) {
     
-
+    const placeholderImg = document.createElement("img");
+    const placeholderImg1 = document.createElement("img");
     const brownieImg = document.createElement("img");
     const hallImg = document.createElement("img")
     const martiniImg = document.createElement("img");
@@ -14,7 +15,8 @@ export default function  home(brownie,hall,martini,pizza,salad,green,awardBronze
     const greenHall = document.createElement("img");
     const gallery = document.createElement("div");
 
-
+    placeholderImg.src = greenhall;
+    placeholderImg1.src = greenhall;
     brownieImg.src = brownie;
     hallImg.src = hall;
     martiniImg.src = martini;
@@ -45,36 +47,68 @@ export default function  home(brownie,hall,martini,pizza,salad,green,awardBronze
         }
 
         const renderGallery = (state) => {
-            gallery.appendChild(images[0]);
-            state.displayImages.forEach(image => {
-                gallery.appendChild(image);
-                image.classList = "";
-            });
-            gallery.appendChild(images[0]);
+            let leftImgIndex = getCircularIndex(state.position-1);
+            let leftImg = state.images[leftImgIndex];
+            leftImg.classList=""
+            gallery.innerHTML=``;
+            gallery.prepend(leftImg);
+            // state.displayImages.forEach(image => {
+            //     image.classList = "";
+            //     gallery.appendChild(image);
+            // });
+            for (let i = 0; i<4;i++){
+                let thisIndex = getCircularIndex(state.position+i);
+                let thisImage = state.images[thisIndex];
+                thisImage.classList=``;
+                gallery.appendChild(thisImage);
+            }
+            let rightImgIndex = getCircularIndex(state.position+4);
+            let rightImg = state.images[rightImgIndex];
+            rightImg.classList=``;
+            gallery.appendChild(rightImg);
         }
 
+
+
         const incrementGallery = (state) => {
+                    state.position+=1;
+                    state.position=getCircularIndex(state.position);
+                    displayPositionMarker(state);
+                    
+                    Array.from(gallery.children).forEach(image => {
+                        image.classList="activeLeft";
+                    });
+                    setTimeout(() => {
+                        renderGallery(state);
+                    }, 250);
+        }
 
-            state.position = getCircularIndex(state.position);
-           let rightIndex = getCircularIndex(state.position+4)
-           let newImage = state.images[rightIndex]
-           newImage.classList.remove("inactive");
-           newImage.classList.add("active");
-            state.displayImages.push(newImage);
-            console.log(state.position);
+        const decrementGallery = (state) => {
+            let newImgIndex = getCircularIndex(state.position-1);
+            let newImg = state.images[newImgIndex];
+            newImg.classList='';
+            gallery.append(newImg);
+            newImg.classList="activeLeft";
+            gallery.removeChild(gallery.lastChild);
 
-            gallery.appendChild(state.images[rightIndex]);
-            if (state.displayImages.length>4) {
-                state.displayImages[0].classList.remove("active");
-                state.displayImages[0].classList.add("inactive");
-                state.displayImages.splice(0,1);
-            }
-            // gallery.removeChild(state.displayImages[0]);
-            if (gallery.childElementCount >9) {
-                gallery.removeChild(gallery.firstChild);
-            }
-            state.position+=1;
+            setTimeout(() => {
+                console.log("waiting");
+            }, 10);
+            state.displayImages.forEach(img => {
+                img.classList="activeLeft";
+            });
+            newImg.classList="";
+            state.displayImages.push(newImg);
+            state.displayImages.splice(0,1);
+            console.log(state.displayImages);
+            setTimeout(() => {
+                renderGallery(state);
+            }, 250);
+
+            state.position-=1;
+            state.position=getCircularIndex(state.position);
             displayPositionMarker(state);
+            
         }
 
         // const decrementGallery = (state) => {
@@ -101,42 +135,42 @@ export default function  home(brownie,hall,martini,pizza,salad,green,awardBronze
 
         // }
 
-        const decrementGallery = (state) => {
-            state.position = getCircularIndex(state.position);
-            let newIndex = getCircularIndex(state.position-1);
-            let newImage = state.images[newIndex];
-            newImage.classList.add("inactive");
-            newImage.classList.remove("active");
-            state.displayImages.unshift(newImage);
-            if (state.displayImages.length>4) {
-                newImage.classList="inactive";
+        // const decrementGallery = (state) => {
+        //     state.position = getCircularIndex(state.position);
+        //     let newIndex = getCircularIndex(state.position-1);
+        //     let newImage = state.images[newIndex];
+        //     newImage.classList.add("inactive");
+        //     newImage.classList.remove("active");
+        //     state.displayImages.unshift(newImage);
+        //     if (state.displayImages.length>4) {
+        //         newImage.classList="inactive";
                 
                 
-                // newImage.classList.remove("active");
-                // newImage.classList.add("inactive");
-                // state.displayImages[4].classList.remove("active");
-                // state.displayImages[4].classList.add("inactive");
-                // state.displayImages.splice(4,1);
-            }
-            state.displayImages[1].classList="inactive";
-            state.displayImages[1].classList="active";
+        //         // newImage.classList.remove("active");
+        //         // newImage.classList.add("inactive");
+        //         // state.displayImages[4].classList.remove("active");
+        //         // state.displayImages[4].classList.add("inactive");
+        //         // state.displayImages.splice(4,1);
+        //     }
+        //     state.displayImages[1].classList="inactive";
+        //     state.displayImages[1].classList="active";
             
-            gallery.prepend(newImage);
-            gallery.prepend(newImage);
+        //     gallery.prepend(newImage);
+        //     gallery.prepend(newImage);
     
 
-            if (gallery.childElementCount>9) {
-                gallery.removeChild(gallery.lastChild);
-            }
+        //     if (gallery.childElementCount>9) {
+        //         gallery.removeChild(gallery.lastChild);
+        //     }
        
         
 
-            console.log(state.position);
+        //     console.log(state.position);
             
-            state.position-=1;
-            displayPositionMarker(state);
+        //     state.position-=1;
+        //     displayPositionMarker(state);
 
-        }
+        // }
         
         const shiftListRight = (state) => {
             let tempImages = [];
@@ -205,7 +239,7 @@ export default function  home(brownie,hall,martini,pizza,salad,green,awardBronze
             setActivePositions(state,false);
         }
 
-        return {setActivePositions,incrementPosition,decrementGallery,displayPositionMarker,test,incrementGallery}
+        return {setActivePositions,incrementPosition,decrementGallery,displayPositionMarker,test,incrementGallery,renderGallery}
 
 
     })();
@@ -225,9 +259,6 @@ export default function  home(brownie,hall,martini,pizza,salad,green,awardBronze
     
     gallery.classList.add("gallery");
 
-   galleryState.images.forEach(image => {
-    gallery.appendChild(image);
-   });
 
     const positionBar = document.createElement("div");
     const galleryBackBtn = document.createElement("button");
@@ -320,6 +351,7 @@ export default function  home(brownie,hall,martini,pizza,salad,green,awardBronze
     content.appendChild(buttonRow);
     content.appendChild(infoPanel);
     content.appendChild(showcases)
+    galleryManager.renderGallery(galleryState);
     galleryManager.displayPositionMarker(galleryState);
 
 }
