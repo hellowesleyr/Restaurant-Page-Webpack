@@ -9,6 +9,7 @@ import martini from './assets/martini.jpg';
 import pizza from './assets/pizza.jpg';
 import salad from './assets/salad.jpg';
 import green from './assets/green.jpg';
+import barImg from './assets/bar.jpg'
 import awardBronze from './assets/bronzeaward.jpg';
 import awardStar from './assets/staraward.jpg';
 import awardLiving from './assets/livingaward.png';
@@ -31,7 +32,7 @@ const aboutAssets = {
   parking: parkingPicture,
 }
 
-home(brownie,hall,martini,pizza,salad,green,awardBronze,awardStar,awardLiving,tapasShowcaseImg,cocktailShowcaseImg,pizzaShowcaseImg);
+home(brownie,hall,martini,pizza,salad,green,awardBronze,awardStar,awardLiving,tapasShowcaseImg,cocktailShowcaseImg,pizzaShowcaseImg,barImg);
 function component() {
     const element = document.createElement('div');
     const btn = document.createElement('button');
